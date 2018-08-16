@@ -37,14 +37,16 @@ class GoogleLogin extends Component {
 
         window.gapi.load('auth2', () => {
           this.enableButton()
-          window.gapi.auth2.init(params).then(
-            res => {
-              if (isSignedIn && res.isSignedIn.get()) {
-                this._handleSigninSuccess(res.currentUser.get())
-              }
-            },
-            err => onFailure(err)
-          )
+          if (!window.gapi.auth2.getAuthInstance()) {
+            window.gapi.auth2.init(params).then(
+              res => {
+                if (isSignedIn && res.isSignedIn.get()) {
+                  this._handleSigninSuccess(res.currentUser.get())
+                }
+              },
+              err => onFailure(err)
+            )
+          }
           if (autoLoad) {
             this.signIn()
           }
@@ -65,9 +67,10 @@ class GoogleLogin extends Component {
     }
     if (!this.state.disabled) {
       const auth2 = window.gapi.auth2.getAuthInstance()
-      const { onSuccess, onRequest, onFailure, prompt, responseType } = this.props
+      const { onSuccess, onRequest, onFailure, prompt, scope, responseType } = this.props
       const options = {
-        prompt
+        prompt,
+        scope,
       }
       onRequest()
       if (responseType === 'code') {
