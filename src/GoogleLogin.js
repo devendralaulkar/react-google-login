@@ -72,6 +72,7 @@ class GoogleLogin extends Component {
         prompt,
         scope,
       }
+      console.log("Scope: " + scope);
       onRequest()
       if (responseType === 'code') {
         auth2.grantOfflineAccess(options).then(res => onSuccess(res), err => onFailure(err))
