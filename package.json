@@ -15,7 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/anthonyjgrove/react-google-login.git"
   },
-  "keywords": ["react", "reactjs", "react-component", "google-login", "google-oAuth2", "google-oAuth"],
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-component",
+    "google-login",
+    "google-oAuth2",
+    "google-oAuth"
+  ],
   "author": {
     "name": "Anthony Grove",
     "email": "anthony@th3legend.com"
@@ -27,6 +34,7 @@
   "homepage": "https://github.com/anthonyjgrove/react-google-login",
   "dependencies": {
     "@types/react": "*",
+    "has-ansi": "^3.0.0",
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
@@ -54,7 +62,7 @@
     "react-dom": "^16.0.0",
     "react-fontawesome": "1.6.1",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "3.7.1",
+    "webpack": "^3.7.1",
     "webpack-dev-server": "2.9.2"
   },
   "peerDependencies": {
@@ -76,7 +84,10 @@
         ]
       },
       "test": {
-        "presets": ["es2015", "react"]
+        "presets": [
+          "es2015",
+          "react"
+        ]
       }
     }
   }
