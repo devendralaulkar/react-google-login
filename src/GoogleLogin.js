@@ -67,10 +67,11 @@ class GoogleLogin extends Component {
     }
     if (!this.state.disabled) {
       const auth2 = window.gapi.auth2.getAuthInstance()
-      const { onSuccess, onRequest, onFailure, prompt, scope, responseType } = this.props
+      const { onSuccess, onRequest, onFailure, prompt, scope, responseType, loginHint } = this.props
       const options = {
         prompt,
         scope,
+        login_hint: loginHint,
       }
       onRequest()
       if (responseType === 'code') {
